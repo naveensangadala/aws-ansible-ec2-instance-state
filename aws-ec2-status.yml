@@ -1,10 +1,10 @@
 ---
-- name: stop  the ec2 instance
+- name: status of  the ec2 instance
   hosts: localhost
   gather_facts: True
   connection: local
   tasks:
-    - name: stop the Ec2  instance
+    - name: status of the Ec2  instance
       ec2:
            instance_ids: "{{instance_id}}"
            region: us-east-1
