@@ -1,0 +1,15 @@
+---
+- name: stop  the ec2 instance
+  hosts: localhost
+  gather_facts: True
+  connection: local
+  tasks:
+    - name: stop the Ec2  instance
+      ec2:
+           instance_ids: "{{instance_id}}"
+           region: us-east-1
+#           aws_access_key: "{{aws_access_key}}"
+#           aws_secret_key: "{{aws_secret_key}}"
+           wait: true
+           state: "{{ status_change }}"
+      register: ec2_out

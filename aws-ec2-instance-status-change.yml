@@ -1,0 +1,30 @@
+---
+- name: status of  the ec2 instance
+  hosts: localhost
+  gather_facts: True
+  tasks:
+    - name: Gather information about all instances
+      ec2_instance_info:
+
+    - name: Gather information about all instances in AZ us-east-1
+      ec2_instance_info:
+        filters:
+          availability-zone: us-east-1
+
+    - name: Gather information about ec2 instances
+      ec2_instance_info:
+        filters:
+          "tag:Name": "{{ value }}"
+      register: instance_result
+    - debug:
+        msg: "my aws instance id is: {{instance_result.instances[0].instance_id}}"
+
+    - name: Confirm the status of ec2 instance
+      pause:
+        prompt: "Are you sure you want to change the status of  ec2 instance? (yes/no)"
+      register: confirm_status
+
+- name:  ec2 instance status
+  import_playbook: aws-ec2-status.yml
+  vars:
+     instance_id: "{{instance_result.instances[0].instance_id}}"
