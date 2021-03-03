@@ -1,7 +1,6 @@
 Ansible playbook to Change the state (start,stop,restart,terminate etc..) of an AWS EC2 instance
 ------------------------------------------------------------------------------------------------
-
-we can use ansible playbook to change the status of a Ec2 instance in AWS, it will gather all the facts based on the availability zone and the tag value for the ec2 instance and then it will perform the requested action
+By using this ansible playbook we can change the status of a Ec2 instance in AWS, it will gather all the facts based on the availability zone and the tag value for the ec2 instance and then it will perform the requested action.
 
 Playbook Execution:
 -------------------
